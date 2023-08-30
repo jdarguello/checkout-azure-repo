@@ -16,7 +16,7 @@ inputs:
   fetch-depth:
     description: number of commits to fetch
     required: false
-    default: 0
+    default: 1
   token:
     description: valid token from an Azure account
     required: true

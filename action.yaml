@@ -44,6 +44,6 @@ runs:
       name: Clone repository with submodules
       shell: bash
       run: |
-        git clone --recurse-submodules --depth ${{ inputs.fetch-depth }} https://${{ inputs.username }}:${{ inputs.token }}@${{ inputs.repo_url }}
+        git clone --recurse-submodules https://${{ inputs.username }}:${{ inputs.token }}@${{ inputs.repo_url }}
 
   

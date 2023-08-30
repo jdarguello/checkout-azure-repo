@@ -16,5 +16,6 @@ jobs:
           repo_url: ${{ secrets.REPO_URL }}
           username: ${{ secrets.AZURE_USERNAME }}
           token: ${{ secrets.AZURE_TOKEN }}
+          submodules: true
       - name: repository content
         run: ls

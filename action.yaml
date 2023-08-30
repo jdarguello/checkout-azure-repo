@@ -13,6 +13,10 @@ inputs:
     description: boolean value which defines if the repository has submodules to update
     required: false
     default: false
+  fetch-depth:
+    description: number of commits to fetch
+    required: false
+    default: 0
   token:
     description: valid token from an Azure account
     required: true
@@ -31,9 +35,15 @@ runs:
         git config --global user.name "${{ inputs.username }}"
         git config --global user.email "azure@azure.com"
 
-    - name: Clone repository
+    - if: inputs.submodules == 'false'
+      name: Clone repository
       shell: bash
       run: |
         git clone https://${{ inputs.username }}:${{ inputs.token }}@${{ inputs.repo_url }}
+    - if: inputs.submodules == 'true'
+      name: Clone repository with submodules
+      shell: bash
+      run: |
+        git clone --recurse-submodules --depth ${{ inputs.fetch-depth }} https://${{ inputs.username }}:${{ inputs.token }}@${{ inputs.repo_url }}
 
   
